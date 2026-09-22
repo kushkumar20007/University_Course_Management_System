@@ -225,16 +225,21 @@ VALUES
 (1, 'Computer Science'),
 (2, 'Mathematics');
 ```
+<img width="790" height="130" alt="image" src="https://github.com/user-attachments/assets/f270106d-5da0-4360-ba7b-4332e4f647c2" />
 
 ## Students
 
 ``` sql
-INSERT INTO Students
-(StudentID, FirstName, LastName, Email, BirthDate, EnrollmentDate)
+INSERT INTO university_course_management_system.student
+(StudentsID, FirstName, LastName, Email, BirthDate, EnrolmentDate)
 VALUES
-(1, 'John', 'Doe', 'john.doe@email.com', '2000-01-15', '2022-08-01'),
-(2, 'Jane', 'Smith', 'jane.smith@email.com', '1999-05-25', '2021-08-01');
+(2, 'Rahul', 'Sharma', 'rahul@gmail.com', '2007-05-14', '2026-09-22'),
+(3, 'Aman', 'Verma', 'aman@gmail.com', '2008-02-18', '2026-09-22'),
+(4, 'Priya', 'Singh', 'priya@gmail.com', '2007-11-09', '2026-09-22'),
+(5, 'Neha', 'Patel', 'neha@gmail.com', '2008-07-25', '2026-09-22'),
+(1, 'Mohan', 'Kumar', 'mohan@gmail.com', '2005-12-02', '2025-02-22');
 ```
+<img width="1019" height="165" alt="image" src="https://github.com/user-attachments/assets/707a8604-cede-4cd1-b7b3-83df3be45295" />
 
 ## Courses
 
@@ -245,6 +250,7 @@ VALUES
 (101, 'Introduction to SQL', 1, 3),
 (102, 'Data Structures', 2, 4);
 ```
+<img width="959" height="91" alt="image" src="https://github.com/user-attachments/assets/f1819c63-e4a6-4e9f-8992-1ba3a82e2956" />
 
 ## Instructors
 
@@ -255,6 +261,7 @@ VALUES
 (1, 'Alice', 'Johnson', 'alice.johnson@univ.com', 1, 65000.00),
 (2, 'Bob', 'Lee', 'bob.lee@univ.com', 2, 60000.00);
 ```
+<img width="1005" height="91" alt="image" src="https://github.com/user-attachments/assets/03278c83-d694-491f-ae44-ac1d28d332e7" />
 
 ## Enrollments
 
@@ -265,6 +272,7 @@ VALUES
 (1, 1, 101, '2022-08-01'),
 (2, 2, 102, '2021-08-01');
 ```
+<img width="1007" height="110" alt="image" src="https://github.com/user-attachments/assets/28e0b839-d7b7-42e8-8c94-92122ddc87c4" />
 
 ------------------------------------------------------------------------
 ## 🎥 Video Demonstration
@@ -326,6 +334,7 @@ SELECT
 FROM Students
 WHERE EnrollmentDate >= '2022-01-01';
 ```
+<img width="846" height="125" alt="image" src="https://github.com/user-attachments/assets/f55091e2-5510-4ef3-a0a6-c8a47440500f" />
 
 ------------------------------------------------------------------------
 
@@ -349,6 +358,7 @@ INNER JOIN Departments d
 WHERE d.DepartmentName = 'Mathematics'
 LIMIT 5;
 ```
+<img width="936" height="81" alt="image" src="https://github.com/user-attachments/assets/553f3ae6-b0b8-40ac-9f43-6596cf3b1b2e" />
 
 ------------------------------------------------------------------------
 
@@ -371,6 +381,7 @@ INNER JOIN Enrollments e
 GROUP BY c.CourseID, c.CourseName
 HAVING COUNT(e.StudentID) > 5;
 ```
+<img width="900" height="105" alt="image" src="https://github.com/user-attachments/assets/578d74ea-1d67-48af-9f9d-1e8541bd640e" />
 
 ------------------------------------------------------------------------
 
