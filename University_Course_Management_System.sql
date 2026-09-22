@@ -1,11 +1,5 @@
-
-
-
 CREATE DATABASE UniversityCourseManagement;
 USE UniversityCourseManagement;
-
-
-
 
 -- 2.1 Departments
 CREATE TABLE Departments (
@@ -114,10 +108,8 @@ SELECT * FROM Instructors;
 SELECT * FROM Enrollments;
 
 
--- ============================================================
--- 5. CRUD OPERATIONS
--- ============================================================
 
+-- 5. CRUD OPERATIONS
 -- CREATE / INSERT
 INSERT INTO Students
 (StudentID, FirstName, LastName, Email, BirthDate, EnrollmentDate)
@@ -190,11 +182,8 @@ DELETE FROM Departments
 WHERE DepartmentID = 3;
 
 
--- ============================================================
 -- 6. PROJECT QUERY #1
 -- Perform CRUD operations on all tables
--- ============================================================
-
 -- INSERT
 INSERT INTO Students
 (StudentID, FirstName, LastName, Email, BirthDate, EnrollmentDate)
@@ -237,11 +226,11 @@ WHERE d.DepartmentName = 'Mathematics'
 LIMIT 5;
 
 
--- ============================================================
+
 -- 9. PROJECT QUERY #4
 -- Number of students in each course
 -- Only courses with more than 5 students
--- ============================================================
+
 
 SELECT
     c.CourseID,
@@ -288,10 +277,9 @@ INNER JOIN Courses AS c
 WHERE c.CourseName IN ('Introduction to SQL', 'Data Structures');
 
 
--- ============================================================
 -- 12. PROJECT QUERY #7
 -- Average number of credits for all courses
--- ============================================================
+
 
 SELECT
     AVG(Credits) AS AverageCredits
@@ -307,10 +295,9 @@ INNER JOIN Departments AS d
 WHERE d.DepartmentName = 'Computer Science';
 
 
--- ============================================================
 -- 14. PROJECT QUERY #9
 -- Count students enrolled in each department
--- ============================================================
+
 
 SELECT
     d.DepartmentID,
@@ -381,10 +368,9 @@ SELECT
 FROM Students;
 
 
--- ============================================================
 -- 19. PROJECT QUERY #14
 -- Concatenate instructor first and last name
--- ============================================================
+
 
 SELECT
     InstructorID,
