@@ -6,7 +6,6 @@ CREATE TABLE Departments (
     DepartmentID INT PRIMARY KEY,
     DepartmentName VARCHAR(100) NOT NULL UNIQUE
 );
-
 -- 2.2 Students
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
@@ -16,7 +15,6 @@ CREATE TABLE Students (
     BirthDate DATE,
     EnrollmentDate DATE
 );
-
 -- 2.3 Courses
 CREATE TABLE Courses (
     CourseID INT PRIMARY KEY,
@@ -28,7 +26,6 @@ CREATE TABLE Courses (
 );
 
 -- 2.4 Instructors
-
 CREATE TABLE Instructors (
     InstructorID INT PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
@@ -51,8 +48,6 @@ CREATE TABLE Enrollments (
     FOREIGN KEY (CourseID)
         REFERENCES Courses(CourseID)
 );
-
-
 
 -- Departments
 INSERT INTO Departments (DepartmentID, DepartmentName)
@@ -88,10 +83,7 @@ VALUES
 (1, 1, 101, '2022-08-01'),
 (2, 2, 102, '2021-08-01');
 
-
--- ============================================================
 -- 4. BASIC VERIFICATION QUERIES
--- ============================================================
 
 SHOW TABLES;
 
@@ -164,27 +156,20 @@ WHERE DepartmentID = 3;
 
 
 -- DELETE
--- Delete the enrollment before deleting the student/course
--- because Enrollments contains foreign keys.
-DELETE FROM Enrollments
-WHERE EnrollmentID = 3;
 
-DELETE FROM Students
-WHERE StudentID = 3;
+DELETE FROM Enrollments WHERE EnrollmentID = 3;
 
-DELETE FROM Courses
-WHERE CourseID = 103;
+DELETE FROM Students WHERE StudentID = 3;
 
-DELETE FROM Instructors
-WHERE InstructorID = 3;
+DELETE FROM Courses WHERE CourseID = 103;
 
-DELETE FROM Departments
-WHERE DepartmentID = 3;
+DELETE FROM Instructors WHERE InstructorID = 3;
+
+DELETE FROM Departments WHERE DepartmentID = 3;
 
 
 -- 6. PROJECT QUERY #1
 -- Perform CRUD operations on all tables
--- INSERT
 INSERT INTO Students
 (StudentID, FirstName, LastName, Email, BirthDate, EnrollmentDate)
 VALUES
@@ -199,8 +184,7 @@ SET Email = 'alex.updated@email.com'
 WHERE StudentID = 3;
 
 -- DELETE
-DELETE FROM Students
-WHERE StudentID = 3;
+DELETE FROM Students WHERE StudentID = 3;
 
 
 
@@ -224,12 +208,6 @@ INNER JOIN Departments AS d
     ON c.DepartmentID = d.DepartmentID
 WHERE d.DepartmentName = 'Mathematics'
 LIMIT 5;
-
-
-
--- 9. PROJECT QUERY #4
--- Number of students in each course
--- Only courses with more than 5 students
 
 
 SELECT
@@ -404,20 +382,10 @@ SELECT
     END AS StudentLevel
 FROM Students;
 
-
-
 -- A. Students sorted by enrollment date
-SELECT *
-FROM Students
-ORDER BY EnrollmentDate DESC;
-
-
+SELECT * FROM Students ORDER BY EnrollmentDate DESC;
 -- B. Courses sorted by credits
-SELECT *
-FROM Courses
-ORDER BY Credits DESC;
-
-
+SELECT * FROM Courses ORDER BY Credits DESC;
 -- C. Students with full name
 SELECT
     StudentID,
@@ -450,69 +418,29 @@ JOIN Departments AS d
 
 
 -- F. Total number of students
-SELECT COUNT(*) AS TotalStudents
-FROM Students;
+SELECT COUNT(*) AS TotalStudents FROM Students;
 
+SELECT COUNT(*) AS TotalCourses FROM Courses;
 
--- G. Total number of courses
-SELECT COUNT(*) AS TotalCourses
-FROM Courses;
+SELECT COUNT(*) AS TotalInstructors FROM Instructors;
 
+SELECT COUNT(*) AS TotalDepartments FROM Departments;
 
--- H. Total number of instructors
-SELECT COUNT(*) AS TotalInstructors
-FROM Instructors;
+SELECT COUNT(*) AS TotalEnrollments FROM Enrollments;
 
+SELECT MAX(Credits) AS HighestCredits FROM Courses;
 
--- I. Total number of departments
-SELECT COUNT(*) AS TotalDepartments
-FROM Departments;
+SELECT MIN(Credits) AS LowestCredits FROM Courses;
 
+SELECT SUM(Credits) AS TotalCredits FROM Courses;
 
--- J. Total number of enrollments
-SELECT COUNT(*) AS TotalEnrollments
-FROM Enrollments;
+SELECT * FROM Students WHERE BirthDate > '2000-01-01';
 
+SELECT * FROM Students WHERE FirstName LIKE 'J%';
 
--- K. Highest course credit
-SELECT MAX(Credits) AS HighestCredits
-FROM Courses;
+SELECT * FROM Students WHERE LastName LIKE '%e';
 
-
--- L. Lowest course credit
-SELECT MIN(Credits) AS LowestCredits
-FROM Courses;
-
-
--- M. Total credits offered
-SELECT SUM(Credits) AS TotalCredits
-FROM Courses;
-
-
--- N. Students born after 2000
-SELECT *
-FROM Students
-WHERE BirthDate > '2000-01-01';
-
-
--- O. Students whose first name starts with J
-SELECT *
-FROM Students
-WHERE FirstName LIKE 'J%';
-
-
--- P. Students whose last name ends with 'e'
-SELECT *
-FROM Students
-WHERE LastName LIKE '%e';
-
-
--- Q. Courses having 4 or more credits
-SELECT *
-FROM Courses
-WHERE Credits >= 4;
-
-
+SELECT * FROM Courses WHERE Credits >= 4;
 -- R. Number of courses in each department
 SELECT
     d.DepartmentName,
@@ -523,8 +451,6 @@ LEFT JOIN Courses AS c
 GROUP BY
     d.DepartmentID,
     d.DepartmentName;
-
-
 -- S. Average credits by department
 SELECT
     d.DepartmentName,
@@ -535,8 +461,6 @@ INNER JOIN Courses AS c
 GROUP BY
     d.DepartmentID,
     d.DepartmentName;
-
-
 -- T. Departments having more than 1 course
 SELECT
     d.DepartmentName,
@@ -548,8 +472,6 @@ GROUP BY
     d.DepartmentID,
     d.DepartmentName
 HAVING COUNT(c.CourseID) > 1;
-
-
 -- U. Student enrollment details
 SELECT
     s.StudentID,
@@ -579,8 +501,6 @@ GROUP BY
     s.StudentID,
     s.FirstName,
     s.LastName;
-
-
 -- W. Students with more than one course
 SELECT
     s.StudentID,
@@ -594,8 +514,6 @@ GROUP BY
     s.FirstName,
     s.LastName
 HAVING COUNT(e.CourseID) > 1;
-
-
 -- X. Rank courses by credits using a window function
 SELECT
     CourseID,
@@ -603,8 +521,6 @@ SELECT
     Credits,
     RANK() OVER (ORDER BY Credits DESC) AS CreditRank
 FROM Courses;
-
-
 -- Y. Row number for students by enrollment date
 SELECT
     StudentID,
@@ -614,8 +530,6 @@ SELECT
         ORDER BY EnrollmentDate
     ) AS RowNumber
 FROM Students;
-
-
 -- Z. Department-wise student count using joins
 SELECT
     d.DepartmentName,
@@ -629,6 +543,3 @@ GROUP BY
     d.DepartmentID,
     d.DepartmentName
 ORDER BY StudentCount DESC;
-
-
-
