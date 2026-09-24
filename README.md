@@ -277,7 +277,7 @@ VALUES
 ------------------------------------------------------------------------
 ## 🎥 Video Demonstration
 
-[![Watch Video](https://img.shields.io/badge/🎥-Watch_Video-red?style=for-the-badge)](https://drive.google.com/file/d/1HfN8bnhrSypFFMM1wGCsX24ZLQ514m5v/view?usp=sharing))
+[![Watch Video](https://img.shields.io/badge/🎥-Watch_Video-red?style=for-the-badge)](https://drive.google.com/file/d/1HfN8bnhrSypFFMM1wGCsX24ZLQ514m5v/view?usp=sharing)
 
 
 # 🚀 SQL Queries & Logic
